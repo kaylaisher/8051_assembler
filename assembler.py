@@ -27,7 +27,12 @@ def check_format(raw_format):
 
 #print(check_format("#0B3H"))
 
+def dec_to_3bit_bin(n):
+    bit2 = (n >> 2) & 1
+    bit1 = (n >> 1) & 1
+    bit0 = (n >> 0) & 1
 
+    return f"{bit2}{bit1}{bit0}"
 
 
 with open("Test01.txt") as f:
@@ -46,6 +51,8 @@ with open("Test01.txt") as f:
                         #text_file.write(element + " ")
                         print("element: "+element+"\n")
                     if ("H" in x_split[1]) and ("H" in x_split[2]):
+                        # MOV direct, direct --> 10000101src_direct dest_direct
+
                         #hex_string = hex(decimal_number)
                         text_file.write(bin_to_hex("10000101")+" ")
                         print("machine code: "+ bin_to_hex("10000101") +"\n")
@@ -58,6 +65,8 @@ with open("Test01.txt") as f:
                         print("-------------------------------")
 
                     if ("@" in x_split[1]) and ("#" in x_split[2]):
+                        # MOV @Ri, #imm --> 0111011i immediate
+
                         #print("MOV @Ri, #imm: "+x_split[1])
                         decimal_machine_code = "0111011"+check_format(x_split[1])
                         print("decimal: "+decimal_machine_code)
@@ -72,11 +81,15 @@ with open("Test01.txt") as f:
                         print("-------------------------------")
 
                     if ("R" in x_split[1]) and ("H" in x_split[2]):
-                        decimal_machine_code = "10101"+check_format(x_split[1])
-                        print("decimal machine code: "+decimal_machine_code)
-                        hex_machine_code = bin_to_hex(decimal_machine_code)
+                        #MOV Rn, direct --> 10101nnn direct
+
+                        decimal_machine_code = "10101"+dec_to_3bit_bin(int(check_format(x_split[1])))
+                        #print("decimal machine code: "+decimal_machine_code)
+                        hex_machine_code = bin_to_hex(decimal_machine_code).upper()
                         print("hex machine code: "+hex_machine_code)
-                        
+                        text_file.write(hex_machine_code+" ")
+                        print("machine code: "+check_format(x_split[2]))
+                        text_file.write(check_format(x_split[2])+" ")
 
                         print("-------------------------------")
 
