@@ -1,6 +1,6 @@
 import re
 
-output_file_path = "output.txt"
+output_file_path = "Test01-out.txt"
 
 
 def bin_to_hex(str):
@@ -9,20 +9,23 @@ def bin_to_hex(str):
     return hexadecimal_string[2:]
 
 def check_format(raw_format):
-    if raw_format and raw_format[0] in ("@"):
-        raw_format = raw_format[2:]
-    if raw_format and raw_format[-1] in ("H"):
-        raw_format = raw_format[:-1]
-        if raw_format[0] == "0":
+    if raw_format:
+        if raw_format[0] in ("@"):
+            raw_format = raw_format[2:]
+        if raw_format[-1] in ("H"):
+            raw_format = raw_format[:-1]
+            if raw_format[0] == "0":
+                raw_format = raw_format[1:]
+        if raw_format[0] in ("#"):
             raw_format = raw_format[1:]
-    if raw_format and raw_format[0] in ("#"):
-        raw_format = raw_format[1:]
-        if raw_format[0] == "0":
+            if raw_format[0] == "0":
+                raw_format = raw_format[1:]
+        if raw_format[0] in ("R"):
             raw_format = raw_format[1:]
 
     return raw_format
 
-print(check_format("#0B3H"))
+#print(check_format("#0B3H"))
 
 
 with open("Test01.txt") as f:
@@ -53,10 +56,9 @@ with open("Test01.txt") as f:
                         print("-------------------------------")
 
                     if ("@" in x_split[1]) and ("#" in x_split[2]):
-                        #hex_string = hex(decimal_number)
                         #print("MOV @Ri, #imm: "+x_split[1])
                         decimal_machine_code = "0111011"+check_format(x_split[1])
-                        #print("decimal: "+decimal_machine_code)
+                        print("decimal: "+decimal_machine_code)
                         #print("hexadecimal: "+bin_to_hex(decimal_machine_code))
                         hex_machine_code = bin_to_hex(decimal_machine_code)
                         text_file.write(hex_machine_code+" ")
@@ -65,6 +67,15 @@ with open("Test01.txt") as f:
                         text_file.write(check_format(x_split[2])+" ")
                         print("machine code: "+ check_format(x_split[2])+"\n")
                         
+                        print("-------------------------------")
+
+                    if ("R" in x_split[1]) and ("H" in x_split[2]):
+                        decimal_machine_code = "10101"+check_format(x_split[1])
+                        print("decimal machine code: "+decimal_machine_code)
+                        hex_machine_code = bin_to_hex(decimal_machine_code)
+                        print("hex machine code: "+hex_machine_code)
+                        
+
                         print("-------------------------------")
 
 
