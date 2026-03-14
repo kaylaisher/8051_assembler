@@ -28,6 +28,8 @@ def check_format(raw_format):
 #print(check_format("#0B3H"))
 
 
+
+
 with open("Test01.txt") as f:
     with open(output_file_path, 'w') as text_file:
         for x in f:
