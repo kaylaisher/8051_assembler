@@ -1,38 +1,8 @@
 import re
-
+from MOV import MOV
 output_file_path = "Test01-out.txt"
 
 
-def bin_to_hex(str):
-    decimal_number = int(str, 2)
-    hexadecimal_string = hex(decimal_number)
-    return hexadecimal_string[2:]
-
-def check_format(raw_format):
-    if raw_format:
-        if raw_format[0] in ("@"):
-            raw_format = raw_format[2:]
-        if raw_format[-1] in ("H"):
-            raw_format = raw_format[:-1]
-            if raw_format[0] == "0":
-                raw_format = raw_format[1:]
-        if raw_format[0] in ("#"):
-            raw_format = raw_format[1:]
-            if raw_format[0] == "0":
-                raw_format = raw_format[1:]
-        if raw_format[0] in ("R"):
-            raw_format = raw_format[1:]
-
-    return raw_format
-
-#print(check_format("#0B3H"))
-
-def dec_to_3bit_bin(n):
-    bit2 = (n >> 2) & 1
-    bit1 = (n >> 1) & 1
-    bit0 = (n >> 0) & 1
-
-    return f"{bit2}{bit1}{bit0}"
 
 
 with open("Test01.txt") as f:
@@ -45,57 +15,25 @@ with open("Test01.txt") as f:
             #print("x_split: ")
             #print(x_split)
             if x_split:
-                
+                print(x_split)
                 if(x_split[0] == "MOV"):
+
                     for element in x_split:
                         #text_file.write(element + " ")
                         print("element: "+element+"\n")
                     if ("H" in x_split[1]) and ("H" in x_split[2]):
                         # MOV direct, direct --> 10000101src_direct dest_direct
-
-                        #hex_string = hex(decimal_number)
-                        text_file.write(bin_to_hex("10000101")+" ")
-                        print("machine code: "+ bin_to_hex("10000101") +"\n")
+                        MOV.direct_direct(x_split, text_file)
                         
-                        text_file.write(check_format(x_split[2])+" ")
-                        print("machine code: "+ check_format(x_split[2])+"\n")
-                        
-                        text_file.write(check_format(x_split[1])+" ")
-                        print("machine code: "+ check_format(x_split[1])+"\n")
-                        print("-------------------------------")
-
-                    if ("@" in x_split[1]) and ("#" in x_split[2]):
+                    elif ("@" in x_split[1]) and ("#" in x_split[2]):
                         # MOV @Ri, #imm --> 0111011i immediate
+                        MOV.reg_imm(x_split, text_file)
 
-                        #print("MOV @Ri, #imm: "+x_split[1])
-                        decimal_machine_code = "0111011"+check_format(x_split[1])
-                        print("decimal: "+decimal_machine_code)
-                        #print("hexadecimal: "+bin_to_hex(decimal_machine_code))
-                        hex_machine_code = bin_to_hex(decimal_machine_code)
-                        text_file.write(hex_machine_code+" ")
-                        print("machine code: "+ hex_machine_code+"\n")
-
-                        text_file.write(check_format(x_split[2])+" ")
-                        print("machine code: "+ check_format(x_split[2])+"\n")
-                        
-                        print("-------------------------------")
-
-                    if ("R" in x_split[1]) and ("H" in x_split[2]):
+                    elif ("R" in x_split[1]) and ("H" in x_split[2]):
                         #MOV Rn, direct --> 10101nnn direct
-
-                        decimal_machine_code = "10101"+dec_to_3bit_bin(int(check_format(x_split[1])))
-                        #print("decimal machine code: "+decimal_machine_code)
-                        hex_machine_code = bin_to_hex(decimal_machine_code).upper()
-                        print("hex machine code: "+hex_machine_code)
-                        text_file.write(hex_machine_code+" ")
-                        print("machine code: "+check_format(x_split[2]))
-                        text_file.write(check_format(x_split[2])+" ")
-
-                        print("-------------------------------")
-
-
-
-'''        
+                        MOV.Rn_direct(x_split, text_file)
+                                      
+  
                 elif(x_split[0] == "SUBB" and len(x)>1):
                     text_file.write("SUBB: ")
                     text_file.write(x)
