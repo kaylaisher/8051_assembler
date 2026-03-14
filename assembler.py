@@ -1,5 +1,7 @@
 import re
-from MOV import MOV
+from main import MOV, SUBB, XRL, LCALL
+from util import tool
+
 output_file_path = "Test01-out.txt"
 
 
@@ -33,22 +35,45 @@ with open("Test01.txt") as f:
                         #MOV Rn, direct --> 10101nnn direct
                         MOV.Rn_direct(x_split, text_file)
                                       
-  
-                elif(x_split[0] == "SUBB" and len(x)>1):
-                    text_file.write("SUBB: ")
-                    text_file.write(x)
+                elif(x_split[0] == "RET"):
+                    machine_code = "00100010"
+                    hex_machine_code = tool.bin_to_hex(machine_code)
+                    print("machine code: "+hex_machine_code)
+                    text_file.write(hex_machine_code+" ")
+                    print("-------------------------------")
+
+                elif x_split[0] == "SUBB":
+                    if ("A" in x_split[1]) and ("@R" in x_split[2]):
+                        SUBB.A_Ri(x_split, text_file)
+
+                    else:
+                        SUBB.A_Rn(x_split, text_file)
+
                 elif(x_split[0] == "XRL"):
-                    text_file.write("XRL: ")
-                    text_file.write(x)
+                    if ("H" in x_split[1]) and ("#" in x_split[2]):
+                        XRL.direct_imm(x_split, text_file)
+
+                    elif ("H" in x_split[1]) and ("A" in x_split[2]):
+                        XRL.direct_A(x_split, text_file)
+                
+                elif(x_split[0] == "LCALL"):
+                    
+                    if (len(x_split[1]) == 16):
+                        LCALL.normal(x_split, text_file)
+
+                    else:
+                        LCALL.abnormal(x_split, text_file)
+
+
+
+                '''
                 elif(x_split[0] == "INC"):
                     text_file.write("INC: ")
                     text_file.write(x)
                 elif(x_split[0] == "JZ"):
                     text_file.write("JZ: ")
                     text_file.write(x)
-                elif(x_split[0] == "LCALL"):
-                    text_file.write("LCALL: ")
-                    text_file.write(x)
+                
                 elif(x_split[0] == "RET"):
                     text_file.write("RET: ")
                     text_file.write(x)

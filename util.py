@@ -19,6 +19,7 @@ class tool:
                     raw_format = raw_format[1:]
             if raw_format[0] in ("R"):
                 raw_format = raw_format[1:]
+            
 
         return raw_format
 
@@ -30,3 +31,5 @@ class tool:
         bit0 = (n >> 0) & 1
 
         return f"{bit2}{bit1}{bit0}"
+
+    
