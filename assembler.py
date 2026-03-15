@@ -7,6 +7,8 @@ output_file_path = "out/Test01-out.txt"
 log_file_path = "log/Test01-log.txt"
 test_file_path = "test_file/Test01.txt"
 
+print("...")
+
 
 with open("test_file/Test01.txt") as f:
     with open(output_file_path, 'w') as text_file:
