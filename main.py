@@ -108,19 +108,19 @@ class LCALL:
         log.write("machine code: " + first_machine_code + '\n')
         text_file.write(tool.check_size(first_machine_code) + " ")
 
-        print(Data.addr_data)
-        print(x_split)
+        #print(Data.addr_data)
+        #print(x_split)
         for address_detail in Data.addr_data:
-            print(Data.addr_data)
+            #print(Data.addr_data)
             if len(address_detail) >1 and  x_split[1] == address_detail[1]:
                 #log.write("call location: \n")
-                print("call location: ")
+                #print("call location: ")
                 #log.write(address_detail )
-                print(address_detail)
+                #print(address_detail)
                 label_location = address_detail[2]
                 break
         label_location = tool.dec_to_16bit_bin(label_location)
-        print("label location: " + label_location)
+        #print("label location: " + label_location)
         second_machine_code = tool.check_size(label_location[8:15])
         print("second machine code: " + second_machine_code)
         log.write("machine code: " + tool.check_size(second_machine_code) + '\n')
@@ -157,28 +157,28 @@ class JZ:
         text_file.write(tool.check_size(first_machine_code) + " ")
         
         for address_detail in Data.addr_data:
-            print(Data.addr_data)
+            #print(Data.addr_data)
             if len(address_detail) >1 and  x_split[1] == address_detail[1]:
                 #log.write("call location: \n")
-                print("call location: ")
+                #print("call location: ")
                 #log.write(address_detail )
-                print(address_detail)
+                #print(address_detail)
                 label_location = address_detail[2]
                 break
 
         
-        next_location = Data.next_addr_cnt
-        print("label location: ")
-        print(label_location)
-        print("next location: ")
-        print(next_location)        
+        # print("label location: ")
+        # print(label_location)
+        # print("next location: ")
+        # print(next_location)        
         
-        offset = int(label_location) - Data.next_addr_cnt
-        print("offset: ")
-        print(offset)
+        offset = int(label_location) - Data.next_addr_cnt + 0xff + 0x01
         offset = hex(offset)
-        print("new offset: ")
-        print(offset)
+        second_machine_code = offset.upper()
+        second_machine_code = second_machine_code[2:]
+        print("second machine code: ")
+        print(second_machine_code)
+        text_file.write(second_machine_code + " ")
 
 class RET:
     def ret(x_split, text_file, log):
