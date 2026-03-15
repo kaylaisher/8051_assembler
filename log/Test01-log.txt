@@ -147,6 +147,7 @@ opcode: JZ
 current addr: 20
 next addr: 22
 machine code: 60
+call location: 
 element: 
 INC
 @R0

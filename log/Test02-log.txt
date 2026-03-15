@@ -1,0 +1,68 @@
+element: 
+
+element: 
+
+element: 
+MOV
+@R1
+#4BH
+OPCODE : MOV
+addr detail: 
+addr index: 2
+opcode: MOV
+current addr: 0
+next addr: 2
+machine code: 77
+machine code: 4B
+-------------------------------
+element: 
+
+INC
+R7
+element: 
+
+JZ
+MINI
+element: 
+XRL
+A
+6CH
+addr detail: 
+addr index: 5
+opcode: XRL
+current addr: 2
+next addr: 4
+machine code: 65
+machine code: 6C
+-------------------------------
+element: 
+
+SUBB
+A
+@R0
+element: 
+
+element: 
+
+element: 
+MINI:
+LABEL: MINI
+addr detail: 
+addr index: 9
+opcode: MINI
+current addr: 4
+next addr: 4
+-----------------------------
+element: 
+MOV
+R6
+0B8H
+OPCODE : MOV
+addr detail: 
+addr index: 10
+opcode: MOV
+current addr: 4
+next addr: 6
+hex machine code: AE
+machine code: B8
+-------------------------------
