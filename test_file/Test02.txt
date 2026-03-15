@@ -1,0 +1,11 @@
+
+
+MOV  @R1  , #4BH
+ INC R7
+   JZ MINI
+XRL      A, 6CH
+   SUBB   A,@R0
+
+
+MINI:
+MOV R6,0B8H
