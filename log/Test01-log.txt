@@ -1,22 +1,9 @@
 element: 
 SUBP:
-LABEL: SUBP
-addr detail: 
-addr index: 0
-opcode: SUBP
-current addr: 0
-next addr: 0
------------------------------
 element: 
 MOV
 38H
 0A0H
-OPCODE : MOV
-addr detail: 
-addr index: 1
-opcode: MOV
-current addr: 0
-next addr: 3
 machine code: 85
 machine code: A0
 machine code: 38
@@ -25,12 +12,6 @@ element:
 MOV
 @R0
 #0B3H
-OPCODE : MOV
-addr detail: 
-addr index: 2
-opcode: MOV
-current addr: 3
-next addr: 5
 machine code: 76
 machine code: B3
 -------------------------------
@@ -38,66 +19,30 @@ element:
 MOV
 R4
 98H
-OPCODE : MOV
-addr detail: 
-addr index: 3
-opcode: MOV
-current addr: 5
-next addr: 7
 hex machine code: AC
 machine code: 98
 -------------------------------
 element: 
 RET
-OPCODE : RET
-addr detail: 
-addr index: 4
-opcode: RET
-current addr: 7
-next addr: 8
 machine code: 22
 -------------------------------
 element: 
-
-element: 
 HEAD:
-LABEL: HEAD
-addr detail: 
-addr index: 6
-opcode: HEAD
-current addr: 8
-next addr: 8
------------------------------
 element: 
 SUBB
 A
 @R1
-addr detail: 
-addr index: 7
-opcode: SUBB
-current addr: 8
-next addr: 9
 machine code: 97
 -------------------------------
 element: 
 SUBB
 A
 R5
-addr detail: 
-addr index: 8
-opcode: SUBB
-current addr: 9
-next addr: 10
 machine code: 9d
 -------------------------------
 element: 
 LCALL
 SUBP
-addr detail: 
-addr index: 9
-opcode: LCALL
-current addr: 10
-next addr: 13
 machine code: 12
 machine code: 00
 machine code: 00
@@ -106,10 +51,6 @@ element:
 XRL
 38H
 #0D6H
-addr detail: addr index: 10
-opcode: XRL
-current addr: 13
-next addr: 16
 machine code: 63
 machine code: 38
 machine code: D6
@@ -118,11 +59,6 @@ element:
 XRL
 40H
 A
-addr detail: 
-addr index: 11
-opcode: XRL
-current addr: 16
-next addr: 18
 machine code: 62
 machine code: 40
 -------------------------------
@@ -130,41 +66,22 @@ element:
 XRL
 A
 93H
-addr detail: 
-addr index: 12
-opcode: XRL
-current addr: 18
-next addr: 20
 machine code: 65
 machine code: 93
 -------------------------------
 element: 
 JZ
 HEAD
-addr detail: 
-addr index: 13
-opcode: JZ
-current addr: 20
-next addr: 22
 machine code: 60
-call location: 
+second machine code: F2
+-----------------------------
 element: 
 INC
 @R0
-addr detail: 
-addr index: 14
-opcode: INC
-current addr: 22
-next addr: 23
 machine code: 06
 -------------------------------
 element: 
 INC
 R3
-addr detail: 
-addr index: 15
-opcode: INC
-current addr: 23
-next addr: 24
 machine code: 0B
 -------------------------------

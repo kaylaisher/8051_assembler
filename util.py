@@ -22,6 +22,8 @@ class tool:
                     return raw_format
                 else:
                     raw_format = raw_format[1:]
+            if raw_format[0] in ("X"):
+                raw_format = raw_format[1:]
 
             if raw_format[-1] in (":"):
                 raw_format = raw_format[:-1]
