@@ -26,6 +26,7 @@ class RETaddr:
     ret_addr = 1
 
 class Data:
+    each_line = []
     addr_data = []
     addr_detail = []
     addr_index = 0

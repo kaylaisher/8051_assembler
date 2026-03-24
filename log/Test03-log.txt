@@ -2,40 +2,56 @@ element:
 MOV
 27H
 57H
+machine code: 85
+machine code: 57
+machine code: 27
+-------------------------------
 element: 
 JZ
 SHOTCU
 machine code: 60
-second machine code: 03
 -----------------------------
 element: 
 SUBB
 A
 @R0
+machine code: 96
+-------------------------------
 element: 
 HOMSW:
 element: 
 MOV
 @R1
 #0EDH
+machine code: 77
+machine code: ED
+-------------------------------
 element: 
 SHOTCU:
 element: 
 XRL
 38H
 #0D6H
+machine code: 63
+machine code: 38
+machine code: D6
+-------------------------------
 element: 
 INC
 @R0
+machine code: 06
+-------------------------------
 element: 
 MOV
 R4
 98H
+hex machine code: AC
+machine code: 98
+-------------------------------
 element: 
 JZ
 HOMSW
 machine code: 60
-second machine code: 01
 -----------------------------
 element: 
 SWET:
@@ -43,17 +59,26 @@ element:
 XRL
 A
 6AH
+machine code: 65
+machine code: 6A
+-------------------------------
 element: 
 INC
 R5
+machine code: 0D
+-------------------------------
 element: 
 RET
+machine code: 22
+-------------------------------
 element: 
 EPI:
 element: 
 SUBB
 A
 R7
+machine code: 9f
+-------------------------------
 element: 
 LCALL
 SWET
@@ -65,5 +90,10 @@ element:
 XRL
 62H
 A
+machine code: 62
+machine code: 62
+-------------------------------
 element: 
 RET
+machine code: 22
+-------------------------------
