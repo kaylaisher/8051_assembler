@@ -1,0 +1,14 @@
+ORG 0000H
+
+        XRL 30H, #05H      
+        XRL 31H, #05H      
+        MOV R4, 30H        
+        XRL A, 31H         
+        SUBB A, R4         
+        JZ  ZERO           
+        XRL 32H, #01H     
+ZERO:   LCALL FUNC         
+
+FUNC:   XRL 33H, #0FH      
+        XRL 33H, A         
+        RET

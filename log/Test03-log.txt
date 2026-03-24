@@ -1,0 +1,69 @@
+element: 
+MOV
+27H
+57H
+element: 
+JZ
+SHOTCU
+machine code: 60
+second machine code: 03
+-----------------------------
+element: 
+SUBB
+A
+@R0
+element: 
+HOMSW:
+element: 
+MOV
+@R1
+#0EDH
+element: 
+SHOTCU:
+element: 
+XRL
+38H
+#0D6H
+element: 
+INC
+@R0
+element: 
+MOV
+R4
+98H
+element: 
+JZ
+HOMSW
+machine code: 60
+second machine code: 01
+-----------------------------
+element: 
+SWET:
+element: 
+XRL
+A
+6AH
+element: 
+INC
+R5
+element: 
+RET
+element: 
+EPI:
+element: 
+SUBB
+A
+R7
+element: 
+LCALL
+SWET
+machine code: 12
+machine code: 00
+machine code: 10
+-------------------------------
+element: 
+XRL
+62H
+A
+element: 
+RET

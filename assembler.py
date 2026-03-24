@@ -4,12 +4,12 @@ from util import tool
 from Address import Data
 from location import Location
 
-output_file_path = "out/Test01-out.txt"
-log_file_path = "log/Test01-log.txt"
-test_file_path = "test_file/Test01.txt"
+output_file_path = "out/Test03-out.txt"
+log_file_path = "log/Test03-log.txt"
+test_file_path = "test_file/Test03.txt"
 
 
-with open("test_file/Test01.txt") as f:
+with open("test_file/Test03.txt") as f:
     with open(log_file_path, 'w') as log:
          for y in f:
             print(y)
@@ -82,10 +82,10 @@ with open("test_file/Test01.txt") as f:
                     Location.jz_location(y_split, log)
 
             Data.addr_index += 1
-            # print(Data.addr_data)
+            
 
 
-with open("test_file/Test01.txt") as f:
+with open("test_file/Test03.txt") as f:
     with open(output_file_path, 'w') as text_file:
         with open(log_file_path, 'w') as log:
             #print(Data.addr_data)
@@ -105,56 +105,56 @@ with open("test_file/Test01.txt") as f:
                         log.write(element + '\n')
                     
 
-                    if(x_split[0] == "MOV"):
-                        # print("MOV main--------")
+                    # if(x_split[0] == "MOV"):
+                    #     # print("MOV main--------")
                        
-                        if ("H" in x_split[1]) and ("H" in x_split[2]):
-                            MOV.direct_direct(x_split, text_file, log)
+                    #     if ("H" in x_split[1]) and ("H" in x_split[2]):
+                    #         MOV.direct_direct(x_split, text_file, log)
 
                             
-                        elif ("@" in x_split[1]) and ("#" in x_split[2]):
-                            MOV.reg_imm(x_split, text_file, log)
+                    #     elif ("@" in x_split[1]) and ("#" in x_split[2]):
+                    #         MOV.reg_imm(x_split, text_file, log)
 
-                        elif ("R" in x_split[1]) and ("H" in x_split[2]):
-                            MOV.Rn_direct(x_split, text_file, log)
+                    #     elif ("R" in x_split[1]) and ("H" in x_split[2]):
+                    #         MOV.Rn_direct(x_split, text_file, log)
                                         
-                    elif(x_split[0] == "RET"):
-                        RET.ret(x_split, text_file, log)
+                    # elif(x_split[0] == "RET"):
+                    #     RET.ret(x_split, text_file, log)
                         
 
-                    elif x_split[0] == "SUBB":
-                        # print("SUBB main----------")
-                        if ("A" in x_split[1]) and ("@R" in x_split[2]):
-                            SUBB.A_Ri(x_split, text_file, log)
+                    # elif x_split[0] == "SUBB":
+                    #     # print("SUBB main----------")
+                    #     if ("A" in x_split[1]) and ("@R" in x_split[2]):
+                    #         SUBB.A_Ri(x_split, text_file, log)
 
-                        else:
-                            SUBB.A_Rn(x_split, text_file, log)
+                    #     else:
+                    #         SUBB.A_Rn(x_split, text_file, log)
 
-                    elif(x_split[0] == "XRL"):
-                        # print("XRL main-------")
-                        if ("H" in x_split[1]) and ("#" in x_split[2]):
-                            XRL.direct_imm(x_split, text_file, log)
+                    # elif(x_split[0] == "XRL"):
+                    #     # print("XRL main-------")
+                    #     if ("H" in x_split[1]) and ("#" in x_split[2]):
+                    #         XRL.direct_imm(x_split, text_file, log)
 
-                        elif ("H" in x_split[1]) and ("A" in x_split[2]):
-                            XRL.direct_A(x_split, text_file, log)
+                    #     elif ("H" in x_split[1]) and ("A" in x_split[2]):
+                    #         XRL.direct_A(x_split, text_file, log)
                     
-                        elif ("A" in x_split[1]) and ("H" in x_split[2]):
-                            XRL.A_direct(x_split, text_file, log)
+                    #     elif ("A" in x_split[1]) and ("H" in x_split[2]):
+                    #         XRL.A_direct(x_split, text_file, log)
 
 
-                    elif(x_split[0] == "LCALL"):
+                    if(x_split[0] == "LCALL"):
                         LCALL.lcall(x_split, text_file, log)
 
                     
-                    elif(x_split[0] == "INC"):
-                        #print("Find INC")
-                        # print("INC main-----------")
-                        if "@" in x_split[1]:
-                            INC.Ri(x_split, text_file, log)
+                    # elif(x_split[0] == "INC"):
+                    #     #print("Find INC")
+                    #     # print("INC main-----------")
+                    #     if "@" in x_split[1]:
+                    #         INC.Ri(x_split, text_file, log)
                         
-                        else:
-                            # print("INC R7 is suppose to be here")
-                            INC.Rn(x_split, text_file, log)
+                    #     else:
+                    #         # print("INC R7 is suppose to be here")
+                    #         INC.Rn(x_split, text_file, log)
 
                         
                     elif(x_split[0] == "JZ"):

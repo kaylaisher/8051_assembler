@@ -1,0 +1,83 @@
+element: 
+ORG
+0000H
+element: 
+XRL
+30H
+#05H
+
+machine code: 63
+machine code: 30
+machine code: 5
+-------------------------------
+element: 
+XRL
+31H
+#05H
+
+machine code: 63
+machine code: 31
+machine code: 5
+-------------------------------
+element: 
+MOV
+R4
+30H
+
+hex machine code: AC
+machine code: 30
+-------------------------------
+element: 
+XRL
+A
+31H
+
+machine code: 65
+machine code: 31
+-------------------------------
+element: 
+SUBB
+A
+R4
+
+machine code: 9c
+-------------------------------
+element: 
+JZ
+ZERO
+
+machine code: 60
+second machine code: 03
+-----------------------------
+element: 
+XRL
+32H
+#01H
+
+machine code: 63
+machine code: 32
+machine code: 1
+-------------------------------
+element: 
+ZERO:
+LCALL
+FUNC
+
+element: 
+FUNC:
+XRL
+33H
+#0FH
+
+element: 
+XRL
+33H
+A
+
+machine code: 62
+machine code: 33
+-------------------------------
+element: 
+RET
+machine code: 22
+-------------------------------

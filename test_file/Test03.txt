@@ -1,0 +1,29 @@
+
+MOV 27H,57H
+  JZ    SHOTCU
+
+SUBB A  , @R0
+
+   HOMSW:
+MOV   @R1, #0EDH
+
+SHOTCU:
+  XRL   38H ,#0D6H
+INC @R0
+   MOV R4,98H
+JZ   HOMSW
+
+  SWET:
+  XRL  A,  6AH
+  INC  R5
+  RET
+
+EPI:
+  SUBB   A,R7
+  LCALL  SWET
+  XRL   62H, A
+RET
+
+
+
+

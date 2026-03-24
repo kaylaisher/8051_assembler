@@ -66,3 +66,12 @@ class tool:
             output = output[-2:-1]
 
         return output.upper()
+    
+    def offset(label_location, current_location):
+        result = label_location - current_location
+        if result < 0:
+            result = (abs(result)^0xFF) + 1
+            result = f"{result:02X}"
+            result = result.upper()
+
+        return result

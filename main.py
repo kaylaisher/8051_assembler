@@ -1,9 +1,9 @@
 from util import tool
 from Address import Data, MOVaddr, RETaddr, SUBBaddr, XRLaddr, LCALLaddr, INCaddr, JZaddr
 
-output_file_path = "Test02-out.txt"
-text_file = "Test02.txt"
-log = "Test02-log.txt"
+output_file_path = "Test03-out.txt"
+text_file = "Test03.txt"
+log = "Test03-log.txt"
 
 class MOV:
 
@@ -116,25 +116,24 @@ class LCALL:
         log.write("machine code: " + first_machine_code + '\n')
         text_file.write(tool.check_size(first_machine_code) + " ")
 
-        #print(Data.addr_data)
         #print(x_split)
         for address_detail in Data.addr_data:
-            #print(Data.addr_data)
+        
+            # print(Data.addr_data)
             if len(address_detail) >1 and  x_split[1] == address_detail[1]:
-                #log.write("call location: \n")
-                #print("call location: ")
-                #log.write(address_detail )
-                #print(address_detail)
+                
                 label_location = address_detail[2]
                 break
-        label_location = tool.dec_to_16bit_bin(label_location)
-        #print("label location: " + label_location)
-        second_machine_code = tool.check_size(label_location[8:15])
+        # label_location = int(label_location, 16)
+        print("label location: ")
+        label_location = f"{label_location:04X}"
+        print(label_location)
+        second_machine_code = tool.check_size(label_location[0:1])
         print("second machine code: " + second_machine_code)
         log.write("machine code: " + tool.check_size(second_machine_code) + '\n')
         text_file.write(tool.check_size(second_machine_code) + " ")
         
-        third_machine_code = tool.check_size(label_location[0:7])
+        third_machine_code = tool.check_size(label_location[2:])
         print("third machine code: " + third_machine_code)
         log.write("machine code: " + tool.check_size(third_machine_code) + '\n')
         text_file.write(tool.check_size(third_machine_code) + " ")

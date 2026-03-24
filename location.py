@@ -1,9 +1,9 @@
 from util import tool
 from Address import Data, MOVaddr, RETaddr, SUBBaddr, XRLaddr, LCALLaddr, INCaddr, JZaddr
 
-output_file_path = "out/Test02-out.txt"
-text_file = "test_file/Test02.txt"
-log = "log/Test02-log.txt"
+output_file_path = "out/Test03-out.txt"
+text_file = "test_file/Test03.txt"
+log = "log/Test03-log.txt"
 
 class Location:
     def label_location(x_split,  log):
